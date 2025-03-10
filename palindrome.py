@@ -16,7 +16,10 @@ def check_if_valid(user_input):
 
 
 def is_palindrome(user_input):
-    pass
+    user_input = list(user_input)
+    if user_input != user_input[::-1]:
+        return False
+    return True
 
 
 if __name__ == '__main__':
