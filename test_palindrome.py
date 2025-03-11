@@ -24,3 +24,6 @@ def test_is_palindrome_3_letters():
 
 def test_not_a_palindrome():
     assert is_palindrome('ab') == False
+
+def test_palindrome_with_spaces():
+    assert is_palindrome(' a toyota ')

@@ -3,10 +3,13 @@ and returns True if that string is a palindrome.'''
 
 def main():
     user_input = input("Type your palindrome: ")
-    is_valid = check_if_valid(user_input)
-    if is_valid:
+    # user_input = 1
+    try:
+        check_if_valid(user_input)
         palindrome = is_palindrome(user_input)
-    print(palindrome)
+        print(palindrome)
+    except TypeError as e:
+        print(e)
 
 
 def check_if_valid(user_input):
@@ -16,10 +19,17 @@ def check_if_valid(user_input):
 
 
 def is_palindrome(user_input):
-    user_input = list(user_input)
-    if user_input != user_input[::-1]:
+    cleaned_user_input = _clean_input(user_input)
+    cleaned_user_input = list(cleaned_user_input)
+    if cleaned_user_input != cleaned_user_input[::-1]:
         return False
     return True
+
+
+def _clean_input(user_input): # private functions are not tested because they are an implementation detail of the public functions
+    cleaned_input = user_input.replace(' ', '')
+    print(cleaned_input)
+    return cleaned_input
 
 
 if __name__ == '__main__':
