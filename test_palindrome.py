@@ -5,7 +5,6 @@ from palindrome import (
     is_palindrome,
     )
 
-
 def test_function_exists():
     assert is_palindrome
 
@@ -16,14 +15,11 @@ def test_user_input_not_valid():
     with pytest.raises(TypeError, match='You have entered the wrong data type. A string is needed.'):
         check_if_valid(123)
 
-def test_is_palindrome():
-    assert is_palindrome('a') == True
-
-def test_is_palindrome_3_letters():
-    assert is_palindrome('aba') == True
-
-def test_not_a_palindrome():
-    assert is_palindrome('ab') == False
-
-def test_palindrome_with_spaces():
-    assert is_palindrome(' a toyota ')
+@pytest.mark.parametrize('user_input, expected', [
+    ('a',               True),
+    ('aba',             True),
+    ('ab',              False),
+    ('a toyota',        True),
+])
+def test_palindrome(user_input, expected):
+    assert is_palindrome(user_input) == expected
