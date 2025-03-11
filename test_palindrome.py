@@ -20,6 +20,7 @@ def test_user_input_not_valid():
     ('aba',             True),
     ('ab',              False),
     ('a toyota',        True),
+    ('A Toyota',        True),
 ])
 def test_palindrome(user_input, expected):
     assert is_palindrome(user_input) == expected
