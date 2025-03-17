@@ -1,19 +1,16 @@
 import pytest
 
-from palindrome import (
-    check_if_valid,
-    is_palindrome,
-    )
+from pure_palindrome import is_palindrome
+
 
 def test_function_exists():
     assert is_palindrome
 
-def test_user_input_is_valid():
-    assert check_if_valid('hello') == 'hello'
 
-def test_user_input_not_valid():
-    with pytest.raises(TypeError, match='You have entered the wrong data type. A string is needed.'):
-        check_if_valid(123)
+def test_valid_user_input():
+    with pytest.raises(TypeError):
+        is_palindrome(123)
+
 
 @pytest.mark.parametrize('user_input, expected', [
     ('a',                            True),
